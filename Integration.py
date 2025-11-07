@@ -6,7 +6,7 @@ import sqlite3
 # basic GUI 
 root = tk.Tk()
 root.title('INTEGRATION')
-root.geometry('300x450')
+root.geometry('300x460')
 
 # new label and inpu
 # student ID label and entry
