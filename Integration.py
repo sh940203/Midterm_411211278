@@ -6,7 +6,7 @@ import sqlite3
 # basic GUI 
 root = tk.Tk()
 root.title('INTEGRATION')
-root.geometry('300x400')
+root.geometry('300x450')
 
 # new label and inpu
 # student ID label and entry
@@ -63,5 +63,16 @@ def overview_student():
 # new botton Overview
 botton_overview = tk.Button(root, text='Overview', command=overview_student)
 botton_overview.pack(pady=25)
+
+def delete_student():
+    student_id = entry_id.get()
+    cursor.execute('SELECT * from DB_student WHERE db_student_id=?', (student_id,))
+    delete = cursor.fetchall()
+    cursor.execute('DELETE from DB_student WHERE db_student_id=?', (student_id,))
+    print ('Folllowing row is delete:', delete)
+    conn.commit()
+
+botton_remove = tk.Button(root, text='Remove', command=delete_student)
+botton_remove.pack(pady=25)
 
 root.mainloop() #must be put to the end of programming code
